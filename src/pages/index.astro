@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import Countdown from '../components/Countdown2.astro';
+import Counter from '../components/Countdown.astro';
 import Location from '../components/Location.astro';
 import Carousel from '../components/Carousel.astro';
 import DressCode from '../components/DressCode.astro';
@@ -15,7 +15,7 @@ const eventDate = '2026-12-31T18:00:00';
 	<Header title="Nos casamos Yasmin e Ivan" subtitle="¡Acompáñanos en nuestro día!" />
 
 	<section class="grid grid-cols-2">
-		<Countdown date={eventDate} />
+		<Counter date={eventDate} />
 		<Location place="Iglesia San José, Ciudad" mapQuery={encodeURIComponent('Iglesia San José Ciudad')} />
 	</section>
 
