@@ -1,3 +1,14 @@
+<div class="event-date">
+  <div class="date-wrapper">
+    <div class="weekday">Sabado</div>
+    <div class="date-line">
+      <span class="lined">Octubre</span>
+      <span class="dayNumber">24</span>
+      <span class="lined">2026</span>
+    </div>
+  </div>
+</div>
+
 <div class="counter">
     <div class="circle-container">
       <div class="circle" id="days">0</div>
@@ -11,14 +22,55 @@
       <div class="circle" id="minutes">0</div>
       <div class="text">MINUTOS</div>
     </div>
-</div>  
+</div>
 
 <style>
+    .event-date {
+        margin-bottom: 1vw;
+    }
+
+    .date-wrapper {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        font-family: "GlacialIndiferenceRegular", sans-serif;
+    }
+
+    .weekday {
+        font-family: "GlacialIndiferenceRegular", sans-serif;
+        font-size: 5vw;
+        letter-spacing: 1px;
+        margin-bottom: .5vw;
+        text-transform: none;
+    }
+
+    .date-line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1vw;
+    }
+
+    .lined {
+        display: inline-block;
+        border-top: 6px solid #000;
+        border-bottom: 6px solid #000;
+        padding: 6px 8px;
+        font-family: "GlacialIndiferenceRegular", sans-serif;
+        font-size: 5vw;
+    }
+
+    .dayNumber {
+        font-family: "BeautifulDeliciousScript", cursive;
+        font-size: 1vw;
+        line-height: 1;
+        padding: 0 1vw;
+    }
+
     .counter {
         align-items: center;
         display: flex;
         justify-content: center;
-        background-color: #e9e0acff;
     }
 
     .circle-container {

@@ -11,12 +11,26 @@
 			:root {
 				--accent: #b85bd8;
 				--muted: #6b7280;
-				--bg: #fffafc;
+				--bg: #cfdbcd;
 				--container: 1080px;
+			}
+			@font-face {
+				font-family: 'GlacialIndiferenceRegular';
+				src: url('/fonts/GlacialIndifferenceRegular.otf') format('opentype');
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: 'BeautifulDeliciousScript';
+				src: url('/fonts/BDScript-Bold.woff2') format('woff2');
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
 			}
 			html, body {
 				margin: 0;
-				font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+				font-family: 'GlacialIndiferenceRegular';
 				background: var(--bg);
 				color: #111827;
 				-webkit-font-smoothing: antialiased;

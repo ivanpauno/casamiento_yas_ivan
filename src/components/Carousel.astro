@@ -1,32 +1,43 @@
 ---
-const { images = ['/Invitación De Boda Anillos De Oro Florales Stock de ilustración - Ilustración de delicado, scrapbook_ 4666282.jpeg'] } = Astro.props;
+const { images = [
+  '/carousel/20260520_201858.jpg',
+  '/carousel/20260506_175055.jpg',
+  '/carousel/20260520_165432.jpg',
+  '/carousel/20260504_103949.jpg',
+  '/carousel/20260517_113410.jpg'
+] } = Astro.props;
 ---
 <div class="card">
   <h2 style="margin:0 0 8px 0">Fotos</h2>
-  <div class="carousel">
-    {images.map((src, i) => (
-      <div class="slide" data-index={i}><img src={src} alt={`foto-${i}`} /></div>
-    ))}
-  </div>
-  <div style="margin-top:12px;display:flex;gap:8px;">
-    <button id="prev">◀</button>
-    <button id="next">▶</button>
-  </div>
+    <div class="carousel">
+      {images.map((src, i) => (
+        <div class="slide" data-index={i}>
+          <div class="img-inner"><img src={src} alt={`foto-${i}`} class="img" /></div>
+        </div>
+      ))}
+    </div>
 </div>
 
 <style>
-  .carousel { position: relative; height:360px; overflow:hidden; border-radius:8px }
-  .slide { position:absolute; inset:0; opacity:0; transition:opacity .5s }
-  .slide img { width:100%;height:100%;object-fit:cover }
-  .slide.active { opacity:1 }
-  button { background:var(--accent); color:white; border:none;padding:8px 10px;border-radius:6px }
+  .carousel { position: relative; height:1024px; overflow:hidden; border-radius:8px }
+    .slide { position:absolute; inset:0; opacity:0; transition:opacity .5s; cursor: pointer; display:flex; align-items:center; justify-content:center }
+    .img-inner { width:100%; height:100%; overflow:hidden; position:relative }
+    .img-inner img { width:100%; height: auto; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); display:block; max-width:none; max-height:none; }
+    .slide.active { opacity:1 }
 </style>
 
 <script>
   const slides = Array.from(document.querySelectorAll('.slide'));
   let idx = 0;
   function show(i){ slides.forEach(s=>s.classList.remove('active')); slides[i].classList.add('active') }
-  if(slides.length){ show(0) }
-  document.getElementById('prev').addEventListener('click',()=>{ idx=(idx-1+slides.length)%slides.length; show(idx) })
-  document.getElementById('next').addEventListener('click',()=>{ idx=(idx+1)%slides.length; show(idx) })
+  let timer;
+  if(slides.length){
+    show(0);
+    timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 2000);
+    slides.forEach((s,i)=> s.addEventListener('click', ()=>{
+      idx = (i+1) % slides.length; show(idx);
+      clearInterval(timer);
+      timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 2000);
+    }));
+  }
 </script>
