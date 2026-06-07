@@ -1,18 +1,43 @@
 ---
+interface Props {
+  imgSrc?: string;
+  offsetX?: string; // e.g. "-20px" or "10%"
+  offsetY?: string;
+}
+const { imgSrc = '/carousel/IMG_4467.png', offsetX = '0px', offsetY = '0px' } = Astro.props as Props;
 ---
 
-<header class="hero">
-  <img src="/header.png" alt="Portada" class="hero-img" />
-</header>
-
 <style>
-  .hero { width: 100%; overflow: hidden; height: 600px; display: flex; justify-content: center; align-items: center}
-  .hero-img {
-    height: 100%;
-    width: auto;
-    display: block;
-    object-position: center center;
-    object-fit: none;
-    min-width: 300px;
+  .header2 { display: flex; width: 100%; }
+  .half { width: 50%; display: flex; align-items: center; justify-content: center; }
+  .left { text-align: center; width: 90% }
+  .names { font-family: 'Fraunces', serif; font-size: 12cqi; margin: 0 }
+  .nos { font-family: 'BeautifulDeliciousScript', serif; font-size: 15vw; margin: 0 }
+  .subtitle { margin-top: .1vh; font-size: 3vw; color: #374151; }
+
+  .right { position: relative }
+  .img-wrap { width: 90%; margin: 0 auto; height:1024px ; overflow: hidden; border-radius: 18px; display:flex; align-items:center; justify-content:center; }
+  .img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: calc(50% + var(--offsetX)) calc(50% + var(--offsetY)); display:block; }
+
+  @media (max-width: 768px) {
+    .header2 { flex-direction: column; }
+    .half { width: 100%; }
+    .img-wrap { height: 60vh; max-height: 600px; }
   }
 </style>
+
+<header class="header2">
+  <div class="half left">
+    <div>
+      <h1 class="names">YASMIN &amp; IVAN</h1>
+      <h2 class="nos">Nos Casamos!</h2>
+      <p class="subtitle"></p>
+    </div>
+  </div>
+
+  <div class="half right">
+    <div class="img-wrap" style={`--offsetX: ${offsetX}; --offsetY: ${offsetY};`}>
+      <img src={imgSrc} alt="Yasmin & Ivan"/>
+    </div>
+  </div>
+</header>
