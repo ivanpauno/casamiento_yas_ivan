@@ -1,0 +1,32 @@
+---
+const { date = '2027-01-01T00:00:00' } = Astro.props;
+---
+<div class="card">
+  <h2 style="margin:0 0 8px 0">Fecha</h2>
+  <div id="countdown" data-target={date}>Cargando contador…</div>
+</div>
+
+<script>
+  (function(){
+    const el = document.getElementById('countdown');
+    if(!el) return;
+    const target = new Date(el.dataset.target).getTime();
+    function fmt(n){return String(n).padStart(2,'0')}
+    function update(){
+      const now = Date.now();
+      const diff = target - now;
+      if(diff<=0){ el.textContent = '¡Hoy!'; clearInterval(iv); return }
+      const days = Math.floor(diff/86400000);
+      const hours = Math.floor(diff%86400000/3600000);
+      const mins = Math.floor(diff%3600000/60000);
+      const secs = Math.floor(diff%60000/1000);
+      el.textContent = `${days}d ${fmt(hours)}h ${fmt(mins)}m ${fmt(secs)}s`;
+    }
+    const iv = setInterval(update,1000);
+    update();
+  })();
+</script>
+
+<style>
+  #countdown { font-weight:600; font-size:18px; color:var(--accent); }
+</style>

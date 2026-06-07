@@ -1,0 +1,8 @@
+---
+const { alias = 'CUIT 20-00000000-0', message = 'Si prefieres transferir, por favor usar el alias y escribir un mensaje.' } = Astro.props;
+---
+<div class="card">
+  <h2 style="margin:0 0 8px 0">Regalos</h2>
+  <p style="margin:0 0 8px 0;color:var(--muted)">Alias / CBU: <strong>{alias}</strong></p>
+  <p style="margin:0;color:var(--muted)">{message}</p>
+</div>

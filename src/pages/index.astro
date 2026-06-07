@@ -1,11 +1,34 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Countdown from '../components/Countdown2.astro';
+import Location from '../components/Location.astro';
+import Carousel from '../components/Carousel.astro';
+import DressCode from '../components/DressCode.astro';
+import Gift from '../components/Gift.astro';
+import RSVP from '../components/RSVP.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const eventDate = '2026-12-31T18:00:00';
 ---
 
 <Layout>
-	<Welcome />
+	<Header title="Nos casamos Yasmin e Ivan" subtitle="¡Acompáñanos en nuestro día!" />
+
+	<section class="grid grid-cols-2">
+		<Countdown date={eventDate} />
+		<Location place="Iglesia San José, Ciudad" mapQuery={encodeURIComponent('Iglesia San José Ciudad')} />
+	</section>
+
+	<section>
+		<Carousel images={[ '/Invitación De Boda Anillos De Oro Florales Stock de ilustración - Ilustración de delicado, scrapbook_ 4666282.jpeg', '/favicon.svg', '/favicon.ico' ]} />
+	</section>
+
+	<section class="grid grid-cols-2">
+		<DressCode title="Dress-code" description="Formal — traje oscuro / vestido de cóctel. Colores sugeridos: pasteles y tonos neutros." />
+		<Gift alias="alias@banco" message="Si preferís transferir, usar alias y avisarnos por mensaje." />
+	</section>
+
+	<section>
+		<RSVP formAction="https://formspree.io/f/your-form-id" />
+	</section>
 </Layout>

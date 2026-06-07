@@ -1,0 +1,28 @@
+---
+const { formAction = 'https://formspree.io/f/your-form-id' } = Astro.props;
+---
+<div class="card">
+  <h2 style="margin:0 0 8px 0">Confirmación de asistencia</h2>
+  <form id="rsvp" method="POST" action={formAction}>
+    <label style="display:block;margin-bottom:8px">Nombre completo<input name="name" required style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"/></label>
+    <label style="display:block;margin-bottom:8px">Correo electrónico<input name="email" type="email" required style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"/></label>
+    <label style="display:block;margin-bottom:8px">¿Asistirás?<select name="attendance" required style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"><option value="Sí">Sí</option><option value="No">No</option></select></label>
+    <label style="display:block;margin-bottom:8px">Mensaje (opcional)<textarea name="message" rows="3" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"></textarea></label>
+    <div style="display:flex;gap:8px;margin-top:12px"><button type="submit" class="button">Enviar</button><button type="button" id="mailto" class="button" style="background:#444">Enviar por mail</button></div>
+  </form>
+  <p style="color:var(--muted);font-size:13px;margin-top:8px">Nota: Reemplaza `formAction` con tu endpoint de Formspree u otro servicio para envío automático.</p>
+</div>
+
+<script>
+  document.getElementById('mailto').addEventListener('click',()=>{
+    const f=document.getElementById('rsvp');
+    const data = new FormData(f);
+    const name = data.get('name')||'';
+    const email = data.get('email')||'';
+    const attendance = data.get('attendance')||'';
+    const message = data.get('message')||'';
+    const subject = encodeURIComponent(`RSVP - ${name} - ${attendance}`);
+    const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\nAsistencia: ${attendance}\nMensaje:\n${message}`);
+    location.href = `mailto:?subject=${subject}&body=${body}`;
+  });
+</script>
