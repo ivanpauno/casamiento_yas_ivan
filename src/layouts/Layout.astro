@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" /> -->
 		<meta name="generator" content={Astro.generator} />
 		<title>Nos casamos — Yasmin & Ivan</title>
 		<style>
@@ -31,12 +31,13 @@
 			@font-face {
 				font-family: 'Fraunces';
 				src: url('/fonts/Fraunces,Ibarra_Real_Nova/Fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf') format('truetype');
-				font-weight: 400;
+				font-weight: 330;
 				font-style: normal;
 				font-display: swap;
 			}
 			html, body {
 				margin: 0;
+				height: 100%;
 				font-family: 'GlacialIndiferenceRegular';
 				background: var(--bg);
 				color: #111827;
@@ -46,21 +47,12 @@
 			}
 			/* ensure predictable box-sizing and prevent grid items from forcing overflow */
 			*, *::before, *::after { box-sizing: border-box; }
-			/* make the site full width so header and sections can be full-bleed */
-			.site { max-width: none; width: 100%; margin: 0; padding: 0; }
-			.site, .site > * { min-width: 0; }
-			header { margin-bottom: 0; }
+			.site { max-width: none; width: 100%; margin: 0; padding: 0; display: grid; gap: 10px 5px; }
+			.site > * { width: 100%; min-width: 0; }
 			/* sections span full width but internal content can use .card for boxed look */
-			section { margin: 0; padding: 40px 16px; box-sizing: border-box; }
-			.grid { display: grid; gap: 24px; }
-			/* allow grid children to shrink to avoid creating a min-width larger than viewport */
-			.grid > * { min-width: 0; }
-			@media (min-width: 768px) { .grid-cols-2 { grid-template-columns: 1fr 1fr; } }
-			/* cards now expand to full width of their section */
-			.card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 6px 20px rgba(16,24,40,0.06); width: 100%; box-sizing: border-box; }
+			section { margin: 0;}
 			/* responsive media and iframe handling to avoid overflow */
 			img, iframe { max-width: 100%; height: auto; display: block; }
-			a.button { background: var(--accent); color: white; padding: 10px 16px; border-radius: 8px; text-decoration: none; }
 		</style>
 	</head>
 	<body>

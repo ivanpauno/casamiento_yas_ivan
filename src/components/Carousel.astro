@@ -1,29 +1,68 @@
 ---
-const { images = [
-  '/carousel/20260520_201858.jpg',
-  '/carousel/20260506_175055.jpg',
-  '/carousel/20260520_165432.jpg',
-  '/carousel/20260504_103949.jpg',
-  '/carousel/20260517_113410.jpg'
-] } = Astro.props;
+import { Image } from 'astro:assets';
+import img0 from '../images/carousel/20260520_201858.jpg';
+import img1 from '../images/carousel/20260506_175055.jpg';
+import img2 from '../images/carousel/20260520_165432.jpg';
+import img3 from '../images/carousel/20260504_103949.jpg';
+import img4 from '../images/carousel/20260517_113410.jpg';
+const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
 ---
+
 <div class="card">
-  <h2 style="margin:0 0 8px 0">Fotos</h2>
-    <div class="carousel">
-      {images.map((src, i) => (
-        <div class="slide" data-index={i}>
-          <div class="img-inner"><img src={src} alt={`foto-${i}`} class="img" /></div>
-        </div>
-      ))}
-    </div>
+  <div class="slide-container">
+    {images.map((src, i) => (
+      <div class={`slide s${i}`} data-index={i}>
+        <Image src={src} alt={`foto-${i}`} class="img"/>
+      </div>
+    ))}
+  </div>
 </div>
 
 <style>
-  .carousel { position: relative; height:1024px; overflow:hidden; border-radius:8px }
-    .slide { position:absolute; inset:0; opacity:0; transition:opacity .5s; cursor: pointer; display:flex; align-items:center; justify-content:center }
-    .img-inner { width:100%; height:100%; overflow:hidden; position:relative }
-    .img-inner img { width:100%; height: auto; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); display:block; max-width:none; max-height:none; }
-    .slide.active { opacity:1 }
+  .card {
+    display: flex;
+    justify-content: center;
+    padding: 1rem
+  }
+  .slide-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 60vh;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slide.s0 img {
+    object-position: 70% 50%;
+  }
+
+  .slide.s1 img {
+    object-position: 90% 70%;
+  }
+
+  .slide.s4 img {
+    object-position: 40% 50%;
+  }
 </style>
 
 <script>

@@ -1,76 +1,111 @@
-<div class="event-date">
-  <div class="date-wrapper">
-    <div class="date-line">
-      <span class="lined">Octubre</span>
-      <span class="dayNumber">24</span>
-      <span class="lined">2026</span>
-    </div>
-    <div class="weekday">Sábado</div>
-  </div>
-</div>
+---
+import { Image } from 'astro:assets';
 
-<div class="counter">
-    <div class="circle-container">
-      <div class="circle" id="days">0</div>
-      <div class="text">DÍAS</div>
+import calendar from '../images/iconos/calendario.png';
+import clock from '../images/iconos/reloj.png';
+---
+
+<div class="countdown">
+    <div class="event-date">
+        <Image src={calendar} alt="calendar" />
+        <div class="date-wrapper">
+            <div class="date-line">
+                <span class="lined">Octubre</span>
+                <span class="cursive">      24      </span>
+                <span class="lined">2026</span>
+            </div>
+        </div>
     </div>
-    <div class="circle-container">
-      <div class="circle" id="hours">0</div>
-      <div class="text">HORAS</div>
+
+    <div class="event-time">
+        <Image src={clock} alt="clock" />
+        <div>
+            <span class="cursive">   19:00   </span>
+        </div>
     </div>
-    <div class="circle-container">
-      <div class="circle" id="minutes">0</div>
-      <div class="text">MINUTOS</div>
+
+    <div class="counter">
+        <div class="circle-container">
+            <div class="circle" id="days">0</div>
+            <div class="text">DÍAS</div>
+        </div>
+        <div class="circle-container">
+            <div class="circle" id="hours">0</div>
+            <div class="text">HORAS</div>
+        </div>
+        <div class="circle-container">
+            <div class="circle" id="minutes">0</div>
+            <div class="text">MINUTOS</div>
+        </div>
     </div>
 </div>
 
 <style>
-    .event-date {
-        margin-bottom: 0vw;
-    }
-
-    .date-wrapper {
-        width: 300px;
-        margin: 0 auto;
-        text-align: center;
-        font-family: "GlacialIndiferenceRegular", sans-serif;
-    }
-
-    .weekday {
-        font-family: "BeautifulDeliciousScript", sans-serif;
-        font-size: 30vw;
-        letter-spacing: 1px;
-        margin-bottom: 0vw;
-        text-transform: none;
-    }
-
-    .date-line {
+    .countdown {
+        background: #ebdec7;
         display: flex;
+        flex-direction: column;
+        gap: clamp(5px, 1vw, 15px);
+        padding: clamp(5px, 1vw, 15px);
         justify-content: center;
+        justify-items: center;
+        align-content: center;
         align-items: center;
-        gap: 0vw;
+        text-align: center;
+    }
+    .event-date {
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .event-date img {
+        height: calc(2 * clamp(1rem, 14vw, 6vh));
+        width: auto;
+        position: relative;
+        top: 0%;
+    }
+
+    .event-time {
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .event-time img {
+        height: calc(3 * clamp(1rem, 14vw, 6vh));
+        width: calc(3 * clamp(1rem, 14vw, 6vh));
+        object-fit: contain;
+        position: relative;
+        top: 0%;
+        display: block;
     }
 
     .lined {
         display: inline-block;
         border-top: .1vh solid #5c5448;
         border-bottom: .1vh solid #5c5448;
-        padding: 0 4vw;
-        font-family: "GlacialIndiferenceRegular", sans-serif;
-        font-size: 10vw;
+        padding: 0 1svw;
+        font-family: "Fraunces", sans-serif;
+        font-size: clamp(1rem, 14vw, 6vh);
     }
 
-    .dayNumber {
-        font-family: "BeautifulDeliciousScript", cursive;
-        font-size: 25vw;
-        line-height: 1;
-        padding: 0 2vw;
+    .cursive {
+        font-family: "Fraunces", sans-serif;
+        font-size: clamp(1rem, 14vw, 6vh);
     }
 
     .counter {
         align-items: center;
         display: flex;
         justify-content: center;
+        padding-top: clamp(30px, 6vw, 90px);
     }
 
     .circle-container {
@@ -82,10 +117,10 @@
     .circle {
         align-items: center;
         border-radius: 50%;
-        background-color: #ffffffff;
+        background-color: #cfdbcd;
         color: #000;
         display: flex;
-        font-size: 12vw;
+        font-size: clamp(1rem, 8vw, 6vh);
         justify-content: center;
         height: 10vw;
         margin: 0px 4vw;
@@ -102,6 +137,9 @@
         .circle {
             height: 8vh;
             width: 8vh;
+        }
+        span {
+            display: block;
         }
 
         .text {

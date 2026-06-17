@@ -1,10 +1,94 @@
 ---
-const { place = 'Salón Principal, Ciudad'} = Astro.props;
+import { Image } from 'astro:assets';
+
+import brindis from '../images/iconos/brindis.png';
 ---
 <div class="card">
-  <h2 style="margin:0 0 8px 0">Lugar</h2>
-  <p style="margin:0 0 12px 0;color:var(--muted)">{place}</p>
-  <div style="width:100%;height:300px;border-radius:8px;overflow:hidden">
+  <div class="title">
+    <Image src={brindis} alt="brindis" />
+    <h1>Ubicación</h1>
+  </div>
+  <div class="desc">
+    <div>
+      <p>Ceremonia, recepción y fiesta serán en</p>
+      <p class="cursiva"><span>Circulo Olivos</span> Eventos</p>
+      <p>San Lorenzo 60 La Lucila, Bs As<br/><br/></p>
+      <p>El predio cuenta con estacionamiento</p>
+      <p>para los que desean llegar en auto<br/><br/></p>
+    </div>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.197937514908!2d-58.48199702253961!3d-34.49786587299244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb16e707680b1%3A0x74a58805a211ea3e!2sC%C3%ADrculo%20Olivos%20Eventos!5e0!3m2!1ses-419!2sar!4v1780848860946!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 30px);
+    padding: clamp(10px, 2vw, 30px);
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+  .title img {
+    height: calc( 1.8*clamp(1rem, 14vw, 8vh));
+    width: auto;
+    margin-right: auto;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1rem, 14vw, 8vh);
+    line-height: 0;
+  }
+  .desc {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: clamp(20px, 4vw, 60px);
+    padding: clamp(10px, 2vw, 30px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .cursiva {
+    font-family: 'BeautifulDeliciousScript', serif;
+    font-size: clamp(1rem, 14vw, 8vh);
+    line-height: calc(0.5*clamp(1rem, 14vw, 8vh));
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1rem, 4vw, 3vh);
+    line-height: clamp(1rem, 4vw, 3vh);
+    max-width: clamp(600px, 60vw, 90vw);
+  }
+  iframe {
+    min-width: 40vw;
+    max-width: 60vw;
+    height: 40vh;
+    border: none;
+    display: block;
+  }
+  @media screen and (max-width: 768px) {
+    iframe {
+      width: 90vw;
+    }
+  }
+</style>

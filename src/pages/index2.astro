@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+
+import hero from '../images/IMG_4467.png';
+import flores from '../images/iconos/flores.png';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" /> -->
+		<meta name="generator" content={Astro.generator} />
+		<title>Nos casamos — Yasmin & Ivan</title>
+		<style>
+			:root {
+				--accent: #b85bd8;
+				--muted: #6b7280;
+				--bg: #cfdbcd;
+				--container: 1080px;
+			}
+			@font-face {
+				font-family: 'GlacialIndiferenceRegular';
+				src: url('/fonts/GlacialIndifferenceRegular.otf') format('opentype');
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: 'BeautifulDeliciousScript';
+				src: url('/fonts/BDScript-Bold.woff2') format('woff2');
+				font-weight: 400;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: 'Fraunces';
+				src: url('/fonts/Fraunces,Ibarra_Real_Nova/Fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf') format('truetype');
+				font-weight: 330;
+				font-style: normal;
+				font-display: swap;
+			}
+			html, body {
+				margin: 0;
+				height: 100%;
+				font-family: 'GlacialIndiferenceRegular';
+				background: var(--bg);
+				color: #111827;
+				-webkit-font-smoothing: antialiased;
+				min-width: 0;
+				overflow-x: hidden;
+			}
+			/* ensure predictable box-sizing and prevent grid items from forcing overflow */
+			*, *::before, *::after { box-sizing: border-box; }
+			.site { max-width: none; width: 100%; margin: 0; padding: 0; display: grid; gap: 10px 5px; }
+			.site > * { width: 100%; min-width: 0 }
+			/* sections span full width but internal content can use .card for boxed look */
+			section { margin: 0;}
+			/* responsive media and iframe handling to avoid overflow */
+			img, iframe { max-width: 100%; height: auto; display: block; }
+		</style>
+	</head>
+	<body>
+		<div class="site">
+			<!-- <slot /> -->
+			<section class="header">
+				<div class="header-text">
+					<div>
+						<h1>YASMIN &amp; IVAN</h1>
+						<h2>Nos Casamos!</h2>
+					</div>
+					<div class="deco">
+						<Image src={flores} alt="flor" />
+					</div>
+				</div>
+				<div class="picture" style={`--offsetX: 0; --offsetY: 0;`}>
+					<Image src={hero} alt="Yasmin & Ivan" />
+				</div>
+			</section>
+		</div>
+		<style>
+			.header { display: flex; width: 100%; overflow: hidden; align-items: center; justify-content: center; text-align: center; flex-direction: row}
+			.header * { gap: 0; margin: 0; padding: 0}
+			.header-text { display: flex; width: 100%; align-items: center; justify-content: center; text-align: center; flex-direction: row}
+			.header-text img { object-fit: scale-down; max-width: 35vw;}
+			.header h1 {
+				font-family: 'Fraunces', serif;
+				font-size: clamp(1rem, 14vw, 8vh);
+			}
+			.header h2 {
+				font-family: 'BeautifulDeliciousScript', serif;
+				font-size: clamp(1rem, 18vw, 12vh);
+			}
+			.picture { max-height: 100vh; min-height: 60vh; min-width: 50vw; width: 100%; height: 100%; overflow: hidden; border-radius: 30%; display:flex; border: 3px solid #006400; }
+			.picture img { object-fit: cover; height: 100%; width: 100%; object-position: 80% 50%; }
+			@media (max-width: 1024px) {
+				.header { flex-direction: column; }
+			}
+		</style>
+	</body>
+</html>

@@ -1,34 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import Counter from '../components/Countdown.astro';
-import Location from '../components/Location.astro';
-import Carousel from '../components/Carousel.astro';
-import DressCode from '../components/DressCode.astro';
-import Gift from '../components/Gift.astro';
-import RSVP from '../components/RSVP.astro';
-
-const eventDate = '2026-10-24T19:00:00';
+import Countdown from '../components/Countdown.astro'
+import Location from '../components/Location.astro'
+import Carousel from '../components/Carousel.astro'
 ---
 
 <Layout>
-	<Header imgSrc="/IMG_4467.png" offsetX="0px" offsetY="0px" />
-
-	<section class="grid grid-cols-2">
-		<Counter date={eventDate} />
-		<Location place="Circulo Olivos"/>
-	</section>
-
-	<section>
-		<Carousel images={[ '/carousel/20260520_201858.jpg', '/carousel/20260506_175055.jpg', '/carousel/20260520_165432.jpg', '/carousel/20260504_103949.jpg', '/carousel/20260517_113410.jpg' ]} />
-	</section>
-
-	<section class="grid grid-cols-2">
-		<DressCode title="Dress-code" description="Formal — traje oscuro / vestido de cóctel. Colores sugeridos: pasteles y tonos neutros." />
-		<Gift alias="alias@banco" message="Si preferís transferir, usar alias y avisarnos por mensaje." />
-	</section>
-
-	<section>
-		<RSVP formAction="https://formspree.io/f/your-form-id" />
-	</section>
+	<Header/>
+	<Countdown/>
+	<Location/>
+	<Carousel/>
 </Layout>

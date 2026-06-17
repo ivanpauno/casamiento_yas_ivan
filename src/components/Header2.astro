@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import hero from '../images/IMG_4467.png';
+import flores from '../images/iconos/flores.png';
+interface Props {
+  imgSrc?: any;
+  offsetX?: string; // e.g. "-20px" or "10%"
+  offsetY?: string;
+}
+const { imgSrc = hero, offsetX = '0px', offsetY = '0px' } = Astro.props as Props;
+---
+
+<style>
+  .header { display: flex; width: 100%; min-height: 60dvh; align-items: center; flex-direction: row}
+  .half { flex: 50%; max-width: 50%; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 1vw; box-sizing: border-box; z-index:1; flex-direction:row }
+  .left { text-align: center; width: 50%; }
+  .message { flex: 60%; }
+  .message > div { width: 100%; overflow: hidden; }
+  .fondo { flex: 20% ;z-index:2; margin: 0 -10%; opacity:0.3 }
+  .fondo > div { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden }
+  .fondo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block }
+
+  /* Responsive font sizing that prefers a single line */
+  .names {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.8rem, 6vw + 1vmin, 6vw);
+    line-height: 0.9;
+    margin: 0;
+  }
+  .nos {
+    font-family: 'BeautifulDeliciousScript', serif;
+    font-size: clamp(3.6rem, 14vw + 2vmin, 12vw);
+    margin: 0;
+  }
+  .subtitle { margin-top: 1rem; font-size: clamp(14px, 1.6vw, 1.6rem); color: #374151; }
+
+  .right { position: relative; }
+  .img-wrap { width: 90%; margin: 0 auto; max-height: 2048px; height: 90dvh; overflow: hidden; border-radius: 30%; display:flex; align-items:center; justify-content:center; border: 3px solid #006400 }
+  .img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: calc(50% + var(--offsetX)) calc(50% + var(--offsetY)); display:block; }
+
+  @media (max-width: 1024px) {
+    .header { flex-direction: column; height: 100%; overflow: hidden; }
+    /* Stack halves: each occupies 50dvh. Left contains .message (80%) and .fondo (20%). */
+    .half { flex: 0 0 50dvh; max-width: 100%; width: 100%; flex-direction: row; height: 50dvh; box-sizing: border-box; padding: 0; overflow: hidden; }
+    .half.left { flex: 0 0 50dvh; width: 100%; align-items: center; justify-content: center; text-align: left; }
+    .message { order: 1; width: 80%; flex: none; text-align: left; padding: 0 1rem; margin: 0; min-width: 0 }
+    .fondo { order: 2; width: 20%; flex: none; z-index:2; margin: 0; display:flex; align-items:center; justify-content:center; opacity:0.3; box-sizing: border-box; min-width: 0; overflow: hidden }
+    .fondo > div { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden }
+    /* Ensure the negative desktop margin doesn't leak on mobile */
+    .fondo { margin: 0; }
+    .img-wrap { height: 100%; max-height: none; box-sizing: border-box; }
+    .names, .nos { white-space: normal; }
+    /* Right half (image) occupies the other 50dvh */
+    .half.right { display: flex; align-items: center; justify-content: center; flex: 0 0 50dvh; height: 50dvh; width: 100%; }
+    /* On mobile the image should be 80% of the viewport width, auto height, and truncated via max-height */
+    .img-wrap { width: 80%; max-width: 80%; margin: 0 auto; padding: 0; height: auto; max-height: 50dvh; overflow: hidden; --offsetX: 0px; --offsetY: 0px; border-radius: 30%; }
+    .img-wrap img,
+    .img-wrap picture,
+    .img-wrap picture img,
+    .img-wrap > img { width: 100% !important; height: auto !important; max-height: none; object-fit: cover !important; object-position: center !important; display: block; }
+  }
+</style>
+
+<header class="header">
+  <div class="half left">
+    <div class="message">
+      <h1 class="names">YASMIN &amp; IVAN</h1>
+      <h2 class="nos">Nos Casamos!</h2>
+      <p class="subtitle"></p>
+    </div>
+    <div class="fondo">
+      <div>
+        <Image src={flores} alt="flor" />
+      </div>
+    </div>
+  </div>
+
+  <div class="half right">
+    <div class="img-wrap" style={`--offsetX: ${offsetX}; --offsetY: ${offsetY};`}>
+      <Image src={imgSrc} alt="Yasmin & Ivan" />
+    </div>
+  </div>
+</header>
