@@ -1,28 +1,110 @@
----
-const { formAction = 'https://formspree.io/f/your-form-id' } = Astro.props;
----
 <div class="card">
-  <h2 style="margin:0 0 8px 0">Confirmación de asistencia</h2>
-  <form id="rsvp" method="POST" action={formAction}>
-    <label style="display:block;margin-bottom:8px">Nombre completo<input name="name" required style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"/></label>
-    <label style="display:block;margin-bottom:8px">Correo electrónico<input name="email" type="email" required style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"/></label>
-    <label style="display:block;margin-bottom:8px">¿Asistirás?<select name="attendance" required style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"><option value="Sí">Sí</option><option value="No">No</option></select></label>
-    <label style="display:block;margin-bottom:8px">Mensaje (opcional)<textarea name="message" rows="3" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #e5e7eb"></textarea></label>
-    <div style="display:flex;gap:8px;margin-top:12px"><button type="submit" class="button">Enviar</button><button type="button" id="mailto" class="button" style="background:#444">Enviar por mail</button></div>
+  <h1>Confirma tu presencia!</h1>
+  <form action="https://formspree.io/f/{form_id}" method="post" class="form-grid">
+    <div class="field">
+      <label for="nombre">Nombre Completo</label>
+      <input name="Nombre" id="nombre" />
+    </div>
+    <div class="field">
+      <label for="n_adultos">Cantidad Adultos</label>
+      <input name="CantidadAdultos" id="n_adultos" />
+    </div>
+    <div class="field">
+      <label for="n_menores">Cantidad Menores (hasta 10 anos)</label>
+      <input name="CantidadMenores" id="n_menores" />
+    </div>
+    <div class="field">
+      <label for="restricciones">Restricciones Alimentarias</label>
+      <select name="RestriccionAlimentarias" id="restricciones">
+        <option value="celiacos">celiacos</option>
+        <option value="vegetariano">vegetariano</option>
+        <option value="vegano">vegano</option>
+        <option value="otro">otro</option>
+      </select>
+    </div>
+    <div class="field" id="restricciones-otro-container" style="display:none;">
+      <label for="restricciones-otro">Especificar otra restricción</label>
+      <input name="RestriccionAlimentariasOtro" id="restricciones-otro" placeholder="Detalle la restricción" />
+    </div>
+    <div class="field submit-row">
+      <button type="submit">Enviar</button>
+    </div>
   </form>
-  <p style="color:var(--muted);font-size:13px;margin-top:8px">Nota: Reemplaza `formAction` con tu endpoint de Formspree u otro servicio para envío automático.</p>
-</div>
+  <script>
+    const restriccionesSelect = document.getElementById('restricciones');
+    const otroContainer = document.getElementById('restricciones-otro-container');
+    restriccionesSelect?.addEventListener('change', () => {
+      if (restriccionesSelect.value === 'otro') {
+        otroContainer.style.display = 'block';
+      } else {
+        otroContainer.style.display = 'none';
+      }
+    });
+  </script>
 
-<script>
-  document.getElementById('mailto').addEventListener('click',()=>{
-    const f=document.getElementById('rsvp');
-    const data = new FormData(f);
-    const name = data.get('name')||'';
-    const email = data.get('email')||'';
-    const attendance = data.get('attendance')||'';
-    const message = data.get('message')||'';
-    const subject = encodeURIComponent(`RSVP - ${name} - ${attendance}`);
-    const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\nAsistencia: ${attendance}\nMensaje:\n${message}`);
-    location.href = `mailto:?subject=${subject}&body=${body}`;
-  });
-</script>
+  <style>
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(10px, 2vw, 30px);
+      padding: clamp(10px, 2vw, 30px);
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #ebdec7;
+    }
+    .card h1 {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1rem, 14vw, 8vh);
+      line-height: 1;
+    }
+    .form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: min(100%, 560px);
+      align-items: stretch;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .field label {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      text-align: left;
+    }
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      background: white;
+    }
+    .submit-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .submit-row button {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 12px;
+      background: #f1ca87;
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      cursor: pointer;
+    }
+    .submit-row button:hover {
+      opacity: 0.95;
+    }
+  </style>
+</div>

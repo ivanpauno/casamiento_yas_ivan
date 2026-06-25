@@ -1,7 +1,71 @@
 ---
-const { title = 'Dress-code', description = 'Formal — traje oscuro / vestido de cóctel' } = Astro.props;
+import { Image } from 'astro:assets';
+
+import dress_code from '../images/iconos/dress_code.png';
 ---
 <div class="card">
-  <h2 style="margin:0 0 8px 0">{title}</h2>
-  <p style="margin:0;color:var(--muted)">{description}</p>
+  <div class="title">
+    <Image src={dress_code} alt="Dress Code" />
+    <h1>Dress code</h1>
+  </div>
+  <p>Elegante Casual<br>Ellas: Vestidos midi, largos, o conjuntos con estilo.</br>Ellos: Traje (con corbata opcional).</br>El blanco queda reservado para la novia</p>
+  <a href="https://pin.it/2CvRdlP4u">&#x1F517 Inspiración</a>
 </div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 30px);
+    padding: clamp(10px, 2vw, 30px);
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    background: #ebdec7;
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+  .title img {
+    height: calc( 1.8*clamp(1rem, 14vw, 8vh));
+    width: auto;
+    margin-right: auto;
+    opacity: 0.6;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1rem, 14vw, 8vh);
+    line-height: 0;
+  }
+  p, a {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1rem, 4vw, 3vh);
+    line-height: clamp(1rem, 4vw, 3vh);
+    max-width: clamp(600px, 60vw, 90vw);
+    color: black;
+  }
+  a {
+    background: #f1ca87;
+    border-radius: 60%;
+    /* border: 5px solid black; */
+    box-sizing: border-box;
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3vh);
+    text-decoration: none;
+  }
+</style>

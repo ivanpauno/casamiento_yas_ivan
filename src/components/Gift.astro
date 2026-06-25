@@ -1,8 +1,139 @@
 ---
-const { alias = 'CUIT 20-00000000-0', message = 'Si prefieres transferir, por favor usar el alias y escribir un mensaje.' } = Astro.props;
+import { Image } from 'astro:assets';
+
+import regalo from '../images/iconos/regalo.png';
 ---
+
 <div class="card">
-  <h2 style="margin:0 0 8px 0">Regalos</h2>
-  <p style="margin:0 0 8px 0;color:var(--muted)">Alias / CBU: <strong>{alias}</strong></p>
-  <p style="margin:0;color:var(--muted)">{message}</p>
+  <div class="title">
+    <Image src={regalo} alt="Regalo" />
+    <h1>Regalo</h1>
+  </div>
+  <p>¡El mejor regalo es tu presencia!<br/><br/>Si deseás realizarnos otro regalo, podés</br>colaborar con nuestra Luna de Miel...</p>
+  <div class="button-container">
+    <button id="copyBtn" class="action-btn">&#x1F517 Datos bancarios</button>
+    <span id="info">Alias: MiAliasASDADA</span>
+  </div>
 </div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 30px);
+    padding: clamp(10px, 2vw, 30px);
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    /* background: #ebdec7; */
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+  .title img {
+    height: calc( 1.8*clamp(1rem, 14vw, 8vh));
+    width: auto;
+    margin-right: auto;
+    opacity: 0.6;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1rem, 14vw, 8vh);
+    line-height: 0;
+  }
+  p, button, span {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1rem, 4vw, 3vh);
+    line-height: clamp(1rem, 4vw, 3vh);
+    max-width: clamp(600px, 60vw, 90vw);
+    color: black;
+  }
+  button {
+    background: #88aa82;
+    border-radius: 60%;
+    border: none;
+    box-sizing: border-box;
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3vh); 
+  }
+
+  /* Keep the button and text grouped together */
+  .button-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Style and hide the hover text by default */
+  .button-container span {
+    visibility: hidden;
+    /* width: 160px; */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    
+    /* Position the text above the button */
+    position: absolute;
+    z-index: 1;
+    bottom: 110%; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Smooth fade-in effect */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* Show the text when hovering over the container */
+  .button-container:hover button {
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  // Find the button on the page using its ID
+  const button = document.getElementById('copyBtn');
+  const span = document.getElementById('info');
+  let shown = false;
+  if (button) {
+    button.addEventListener('click', () => {
+      if (!span) {
+        return;
+      }
+      if (shown) {
+        span.style.visibility = "hidden";
+        span.style.opacity = "0";
+        shown = false;
+      } else {
+        span.style.visibility = "visible";
+        span.style.opacity = "1";
+        shown = true;
+      }
+      // const textToCopy = "MiAliasASDADA";
+
+      // navigator.clipboard.writeText(textToCopy)
+      //   .then(() => {
+      //     alert("Alias MiAliasASDADA copiado a clipboard");
+      //   })
+      //   .catch(err => {
+      //     console.error("Failed to copy text: ", err);
+      //   });
+    });
+  }
+</script>
