@@ -1,6 +1,7 @@
 <div class="card">
   <h1>Confirma tu presencia!</h1>
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLSdm7Yab1LKQO7hO5jjZpGL3qbDHN-WKUDuxtWAE2L4Xfitzug/formResponse" method="post" class="form-grid">
+  <!-- <form action="https://docs.google.com/forms/d/e/1FAIpQLSdm7Yab1LKQO7hO5jjZpGL3qbDHN-WKUDuxtWAE2L4Xfitzug/formResponse" method="post" class="form-grid"> -->
+  <form id="myForm">
     <div class="field">
       <label for="nombre">Nombre Completo</label>
       <input name="entry.1777691097" id="nombre" />
@@ -35,11 +36,30 @@
     const restriccionesSelect = document.getElementById('restricciones');
     const otroContainer = document.getElementById('restricciones-otro-container');
     restriccionesSelect?.addEventListener('change', () => {
-      if (restriccionesSelect.value === 'otro') {
+      if (restriccionesSelect.value === '__other_option__') {
         otroContainer.style.display = 'block';
       } else {
         otroContainer.style.display = 'none';
       }
+    });
+  </script>
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevents the redirect page change
+        
+        const formData = new FormData(this);
+        const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdm7Yab1LKQO7hO5jjZpGL3qbDHN-WKUDuxtWAE2L4Xfitzug/formResponse";
+
+        fetch(googleFormUrl, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors' // Crucial to bypass cross-origin browser security blocks
+        })
+        .then(() => {
+            alert('Gracias por tu respuesta!');
+            this.reset();
+        })
+        .catch(error => console.error('Error:', error));
     });
   </script>
 
