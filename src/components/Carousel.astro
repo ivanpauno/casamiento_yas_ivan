@@ -12,7 +12,7 @@ const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
   <div class="slide-container">
     {images.map((src, i) => (
       <div class={`slide s${i}`} data-index={i}>
-        <Image src={src} alt={`foto-${i}`} class="img"/>
+        <Image src={src} alt={`foto-${i}`} class="img" width={1920} sizes="(max-width: 600px) 600px, (max-width: 1200px) 1200px, 1920px"/>
       </div>
     ))}
   </div>

@@ -70,14 +70,14 @@ const { imgSrc = hero, offsetX = '0px', offsetY = '0px' } = Astro.props as Props
     </div>
     <div class="fondo">
       <div>
-        <Image src={flores} alt="flor" />
+        <Image src={flores} alt="flor" width={600} sizes="(max-width: 600px) 600px, (max-width: 1200px) 1200px, 1920px" />
       </div>
     </div>
   </div>
 
   <div class="half right">
     <div class="img-wrap" style={`--offsetX: ${offsetX}; --offsetY: ${offsetY};`}>
-      <Image src={imgSrc} alt="Yasmin & Ivan" />
+      <Image src={imgSrc} alt="Yasmin & Ivan" width={1920} sizes="(max-width: 600px) 600px, (max-width: 1200px) 1200px, 1920px" />
     </div>
   </div>
 </header>

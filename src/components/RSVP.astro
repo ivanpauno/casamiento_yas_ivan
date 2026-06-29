@@ -1,30 +1,31 @@
 <div class="card">
   <h1>Confirma tu presencia!</h1>
-  <form action="https://formspree.io/f/{form_id}" method="post" class="form-grid">
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSdm7Yab1LKQO7hO5jjZpGL3qbDHN-WKUDuxtWAE2L4Xfitzug/formResponse" method="post" class="form-grid">
     <div class="field">
       <label for="nombre">Nombre Completo</label>
-      <input name="Nombre" id="nombre" />
+      <input name="entry.1777691097" id="nombre" />
     </div>
     <div class="field">
       <label for="n_adultos">Cantidad Adultos</label>
-      <input name="CantidadAdultos" id="n_adultos" />
+      <input name="entry.1572898739" id="n_adultos" />
     </div>
     <div class="field">
-      <label for="n_menores">Cantidad Menores (hasta 10 anos)</label>
-      <input name="CantidadMenores" id="n_menores" />
+      <label for="n_menores">Cantidad Menores (hasta 10 años)</label>
+      <input name="entry.384189581" id="n_menores" />
     </div>
     <div class="field">
       <label for="restricciones">Restricciones Alimentarias</label>
-      <select name="RestriccionAlimentarias" id="restricciones">
-        <option value="celiacos">celiacos</option>
-        <option value="vegetariano">vegetariano</option>
-        <option value="vegano">vegano</option>
-        <option value="otro">otro</option>
+      <select name="entry.1067818" id="restricciones">
+        <option value="Ninguna">Ninguna</option>
+        <option value="Celiaco">Celiaco</option>
+        <option value="Vegetariano">Vegetariano</option>
+        <option value="Vegano">Vegano</option>
+        <option value="__other_option__">Otro</option>
       </select>
     </div>
     <div class="field" id="restricciones-otro-container" style="display:none;">
       <label for="restricciones-otro">Especificar otra restricción</label>
-      <input name="RestriccionAlimentariasOtro" id="restricciones-otro" placeholder="Detalle la restricción" />
+      <input name="entry.1067818.other_option_response" id="restricciones-otro" placeholder="Detalle la restricción" />
     </div>
     <div class="field submit-row">
       <button type="submit">Enviar</button>
@@ -80,7 +81,7 @@
     }
     .field input,
     .field select {
-      width: 100%;
+      width: 90%;
       padding: 0.9rem 1rem;
       border-radius: 12px;
       border: 1px solid rgba(0, 0, 0, 0.15);
