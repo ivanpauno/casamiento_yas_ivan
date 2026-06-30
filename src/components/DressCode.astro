@@ -23,7 +23,7 @@ import dress_code from '../images/iconos/dress_code.png';
     align-content: center;
     align-items: center;
     text-align: center;
-    background: #ebdec7;
+    background: var(--card-bg);
   }
   .title {
     display: flex;
@@ -44,21 +44,19 @@ import dress_code from '../images/iconos/dress_code.png';
     opacity: 0.6;
   }
   h1 {
-    font-family: 'Fraunces', serif;
     font-size: clamp(1rem, 14vw, 8vh);
     line-height: 0;
   }
   p, a {
     margin-top: 0;
     margin-bottom: 0;
-    font-family: 'Fraunces', serif;
     font-size: clamp(1rem, 4vw, 3vh);
     line-height: clamp(1rem, 4vw, 3vh);
     max-width: clamp(600px, 60vw, 90vw);
-    color: black;
+    color: var(--text);
   }
   a {
-    background: #f1ca87;
+    background: var(--action-bg);
     border-radius: 60%;
     /* border: 5px solid black; */
     box-sizing: border-box;

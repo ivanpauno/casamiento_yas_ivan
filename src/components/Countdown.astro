@@ -42,7 +42,7 @@ import clock from '../images/iconos/reloj.png';
 
 <style>
     .countdown {
-        background: #ebdec7;
+        background: var(--card-bg);
         display: flex;
         flex-direction: column;
         gap: clamp(5px, 1vw, 15px);
@@ -52,6 +52,7 @@ import clock from '../images/iconos/reloj.png';
         align-content: center;
         align-items: center;
         text-align: center;
+        font-family: var(--font-heading);
     }
     .event-date {
         display: flex;
@@ -92,12 +93,10 @@ import clock from '../images/iconos/reloj.png';
         border-top: .1vh solid #5c5448;
         border-bottom: .1vh solid #5c5448;
         padding: 0 1svw;
-        font-family: "Fraunces", sans-serif;
         font-size: clamp(1rem, 14vw, 6vh);
     }
 
     .cursive {
-        font-family: "Fraunces", sans-serif;
         font-size: clamp(1rem, 14vw, 6vh);
     }
 

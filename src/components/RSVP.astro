@@ -100,11 +100,10 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: #ebdec7;
+      background: var(--card-bg);
     }
     .card h1 {
       margin: 0;
-      font-family: 'Fraunces', serif;
       font-size: clamp(1rem, 14vw, 8vh);
       line-height: 1;
     }
@@ -123,7 +122,6 @@
       width: 100%;
     }
     .field label {
-      font-family: 'Fraunces', serif;
       font-size: clamp(1rem, 3vw, 1.4rem);
       text-align: left;
     }
@@ -131,9 +129,7 @@
     .field select {
       width: 90%;
       padding: 0.9rem 1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.15);
-      font-family: 'Fraunces', serif;
+      border: 1px solid var(--border);
       font-size: clamp(1rem, 3vw, 1.2rem);
       background: white;
     }
@@ -147,9 +143,7 @@
       width: 100%;
       padding: 1rem;
       border: none;
-      border-radius: 12px;
-      background: #f1ca87;
-      font-family: 'Fraunces', serif;
+      background: var(--action-bg);
       font-size: clamp(1rem, 3vw, 1.2rem);
       cursor: pointer;
     }
@@ -170,7 +164,6 @@
       padding: 1.25rem 1.5rem;
       border-radius: 12px;
       min-width: 260px;
-      font-family: 'Fraunces', serif;
       text-align: center;
     }
     .rsvp-dialog-actions {

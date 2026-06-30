@@ -12,7 +12,17 @@
 				--accent: #b85bd8;
 				--muted: #6b7280;
 				--bg: #cfdbcd;
+				--card-bg: #ebdec7;
+				--action-bg: #f1ca87;
+				--text: #111827;
+				--border: rgba(0, 0, 0, 0.15);
+				--radius: 12px;
 				--container: 1080px;
+				--section-gap: clamp(10px, 2vw, 30px);
+				--page-padding: clamp(10px, 2vw, 30px);
+				--font-body: 'GlacialIndiferenceRegular', sans-serif;
+				--font-heading: 'Fraunces', serif;
+				--font-script: 'BeautifulDeliciousScript', serif;
 			}
 			@font-face {
 				font-family: 'GlacialIndiferenceRegular';
@@ -38,9 +48,9 @@
 			html, body {
 				margin: 0;
 				height: 100%;
-				font-family: 'GlacialIndiferenceRegular';
+				font-family: var(--font-body);
 				background: var(--bg);
-				color: #111827;
+				color: var(--text);
 				-webkit-font-smoothing: antialiased;
 				min-width: 0;
 				overflow-x: hidden;
@@ -49,6 +59,22 @@
 			*, *::before, *::after { box-sizing: border-box; }
 			.site { max-width: none; width: 100%; margin: 0; padding: 0; display: grid; gap: 10px 5px; }
 			.site > * { width: 100%; min-width: 0; }
+			h1, h2, h3, h4, h5, h6,
+			p, label, input, select, button, textarea, a {
+				font-family: var(--font-heading);
+			}
+			input, select, button, textarea {
+				border-radius: var(--radius);
+			}
+			button {
+				cursor: pointer;
+			}
+			.card {
+				gap: var(--section-gap);
+				padding: var(--page-padding);
+				text-align: center;
+				font-family: var(--font-heading);
+			}
 			/* sections span full width but internal content can use .card for boxed look */
 			section { margin: 0;}
 			/* responsive media and iframe handling to avoid overflow */
