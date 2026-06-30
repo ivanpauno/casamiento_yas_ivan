@@ -111,25 +111,31 @@ import clock from '../images/iconos/reloj.png';
         align-items: center;
         display: flex;
         flex-direction: column;
+        gap: 0.85rem;
     }
 
     .circle {
         align-items: center;
         border-radius: 50%;
-        background-color: #cfdbcd;
+        background-color: #f8efe0;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
         color: #000;
         display: flex;
-        font-size: clamp(1rem, 8vw, 6vh);
+        font-size: clamp(1.5rem, 6vw, 3rem);
         justify-content: center;
-        height: 10vw;
+        height: min(10vw, 140px);
         margin: 0px 4vw;
-        width: 10vw;
+        width: min(10vw, 140px);
+        min-height: 96px;
+        min-width: 96px;
     }
 
     .text {
         text-align: center;
-        font-size: 5rem;
-        margin: 5px 0;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        margin: 0;
+        letter-spacing: 0.08em;
     }
 
     @media only screen and (max-width: 768px) {
