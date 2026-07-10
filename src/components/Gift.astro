@@ -12,7 +12,7 @@ import regalo from '../images/iconos/regalo.png';
   <p>¡El mejor regalo es tu presencia!<br/><br/>Si deseás realizarnos otro regalo, podés</br>colaborar con nuestra Luna de Miel...</p>
   <div class="button-container">
     <button id="copyBtn" class="action-btn">&#x1F517 Datos bancarios</button>
-    <span id="info">Alias: MiAliasASDADA</span>
+    <span id="info">Alias: YAS.IVAN.2026<br/>CBU: 4530000800016239585759</span>
   </div>
 </div>
 
@@ -56,8 +56,11 @@ import regalo from '../images/iconos/regalo.png';
     margin-bottom: 0;
     font-size: clamp(1rem, 4vw, 3svh);
     line-height: clamp(1rem, 4vw, 3svh);
-    max-width: clamp(600px, 60vw, 90vw);
+    max-width: clamp(600px, 80vw, 90vw);
     color: var(--text);
+  }
+  span {
+    text-align: left;
   }
   button {
     background: #88aa82;
@@ -98,7 +101,6 @@ import regalo from '../images/iconos/regalo.png';
     transition: opacity 0.3s;
   }
 
-  /* Show the text when hovering over the container */
   .button-container:hover button {
     cursor: pointer;
   }
@@ -123,15 +125,14 @@ import regalo from '../images/iconos/regalo.png';
         span.style.opacity = "1";
         shown = true;
       }
-      // const textToCopy = "MiAliasASDADA";
+      const textToCopy = "YAS.IVAN.2026";
 
-      // navigator.clipboard.writeText(textToCopy)
-      //   .then(() => {
-      //     alert("Alias MiAliasASDADA copiado a clipboard");
-      //   })
-      //   .catch(err => {
-      //     console.error("Failed to copy text: ", err);
-      //   });
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+        })
+        .catch(err => {
+          console.error("Failed to copy text: ", err);
+        });
     });
   }
 </script>
