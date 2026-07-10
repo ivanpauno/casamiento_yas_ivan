@@ -71,13 +71,14 @@ const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
   let idx = 0;
   function show(i){ slides.forEach(s=>s.classList.remove('active')); slides[i].classList.add('active') }
   let timer;
+  const period = 3000;
   if(slides.length){
     show(0);
-    timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 5000);
+    timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, period);
     slides.forEach((s,i)=> s.addEventListener('click', ()=>{
-      idx = (i+1) % slides.length; show(idx);
+      idx = (idx + 1) % slides.length; show(idx);
       clearInterval(timer);
-      timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 2000);
+      timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, period);
     }));
   }
 </script>
