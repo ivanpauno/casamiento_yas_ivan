@@ -5,7 +5,9 @@ import img1 from '../images/carousel/20260506_175055.jpg';
 import img2 from '../images/carousel/20260520_165432.jpg';
 import img3 from '../images/carousel/20260504_103949.jpg';
 import img4 from '../images/carousel/20260517_113410.jpg';
-const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
+import img5 from '../images/carousel/20260519_142613.jpg';
+import img6 from '../images/carousel/20231219_154138.jpg';
+const { images = [ img0, img1, img2, img3, img4, img5, img6 ] } = Astro.props;
 ---
 
 <div class="card">
@@ -23,14 +25,16 @@ const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
     display: flex;
     justify-content: center;
     padding: 1rem;
-    /* background: #ebdec7; */
   }
   .slide-container {
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 60svh;
+    min-height: 80svh;
     overflow: hidden;
+  }
+  @media (max-width: 1280px) {
+    .slide-container { min-height: 60svh; }
   }
 
   .slide {
@@ -63,6 +67,14 @@ const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
 
   .slide.s4 img {
     object-position: 40% 50%;
+  }
+
+  .slide.s5 img {
+    object-position: 50% 35%;
+  }
+
+  .slide.s6 img {
+    object-position: 50% 40%;
   }
 </style>
 
