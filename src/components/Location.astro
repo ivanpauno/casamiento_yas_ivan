@@ -11,7 +11,7 @@ import brindis from '../images/iconos/brindis.png';
   <div class="desc">
     <div>
       <p>Ceremonia, recepción y fiesta serán en</p>
-      <p class="cursiva"><span>Circulo Olivos</span> Eventos</p>
+      <p class="cursiva">Circulo Olivos Eventos</p>
       <p>San Lorenzo 60 La Lucila, Bs As<br/><br/></p>
       <p>El predio cuenta con estacionamiento</p>
       <p>para los que quieran llegar en auto<br/><br/></p>
@@ -51,30 +51,25 @@ import brindis from '../images/iconos/brindis.png';
   }
   h1 {
     font-size: clamp(1rem, 14vw, 8svh);
-    line-height: 0;
   }
   .desc {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: clamp(20px, 4vw, 60px);
-    padding: clamp(10px, 2vw, 30px);
+    /* padding: clamp(10px, 2vw, 30px); */
     justify-content: center;
     align-items: center;
     text-align: center;
   }
   .cursiva {
     font-family: var(--font-script);
-    font-size: clamp(1rem, 14vw, 8svh);
-    line-height: calc(0.5*clamp(1rem, 14vw, 8svh));
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    font-size: clamp(1rem, 8vw, 6svh);
   }
   p {
     margin-top: 0;
     margin-bottom: 0;
     font-size: clamp(1rem, 4vw, 3svh);
-    line-height: clamp(1rem, 4vw, 3svh);
     max-width: clamp(600px, 60vw, 90vw);
   }
   iframe {
