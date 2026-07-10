@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ivanpauno.github.io/casamiento_yas_ivan/',
+  site: 'https://bodayasivan.com.ar',
   // base: '/casamiento_yas_ivan/',
   devToolbar: {
     enabled: false
