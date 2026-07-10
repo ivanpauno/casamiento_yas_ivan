@@ -26,7 +26,7 @@ import flores from '../images/iconos/flores.png';
   .header { display: flex; overflow: hidden; align-items: center; justify-content: center; text-align: center; flex-direction: row; margin: clamp(10px, 2vw, 30px)}
   .header * { gap: 0; margin: 0; padding: 0; }
   .header-text { display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: row}
-  .header-text img { object-fit: scale-down; max-width: 35vw}
+  .header-text img { object-fit: contain; max-width: 35vw; max-height: clamp(4rem, 40vw, 30vh);}
   .header h1 {
     font-size: clamp(1rem, 14vw, 8vh);
   }
@@ -34,11 +34,11 @@ import flores from '../images/iconos/flores.png';
     font-family: 'BeautifulDeliciousScript', serif;
     font-size: clamp(1rem, 18vw, 12vh);
   }
-  .picture { max-height: 100vh; min-height: 60vh; min-width: 0; width: 50vw; height: 90vh; overflow: hidden; border-radius: 30%; display:flex; border: 3px solid #006400; }
+  .picture { max-height: 100vh; min-height: 60vh; min-width: 0; width: 50vw; height: 90vh; overflow: hidden; border-radius: 30%; display:flex; border: 1px solid #006400; }
   .picture img { object-fit: cover; height: 100%; width: 100%; object-position: 80% 50%; }
-  @media (max-width: 2000px) {
+  @media (max-width: 1280px) {
     .header { flex-direction: column; }
     .header-text { max-height: 40vh; }
-    .picture { width: 90vw; }
+    .picture { width: 80vw; }
   }
 </style>
