@@ -29,7 +29,7 @@ const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
     position: relative;
     width: 100%;
     height: auto;
-    max-height: 60svh;
+    min-height: 60svh;
     overflow: hidden;
   }
 
@@ -73,7 +73,7 @@ const { images = [ img0, img1, img2, img3, img4 ] } = Astro.props;
   let timer;
   if(slides.length){
     show(0);
-    timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 2000);
+    timer = setInterval(()=>{ idx=(idx+1)%slides.length; show(idx); }, 5000);
     slides.forEach((s,i)=> s.addEventListener('click', ()=>{
       idx = (i+1) % slides.length; show(idx);
       clearInterval(timer);
