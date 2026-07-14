@@ -50,35 +50,42 @@
     });
   </script>
   <script>
-    document.getElementById('myForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevents the redirect page change
+    const myForm = document.getElementById('myForm');
 
-        const form = this;
+    function showDialogMessage(text) {
+      const dialog = document.getElementById('rsvpDialog');
+      const msg = document.getElementById('rsvpDialogMessage');
+      if (msg) msg.textContent = text;
+      if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
+      else if (dialog && typeof dialog.style !== 'undefined') dialog.style.display = 'block';
+    }
 
-        function showDialogMessage(text) {
-          const dialog = document.getElementById('rsvpDialog');
-          const msg = document.getElementById('rsvpDialogMessage');
-          if (msg) msg.textContent = text;
-          if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
-          else if (dialog && typeof dialog.style !== 'undefined') dialog.style.display = 'block';
-        }
+    myForm?.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-        const formData = new FormData(form);
-        const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdm7Yab1LKQO7hO5jjZpGL3qbDHN-WKUDuxtWAE2L4Xfitzug/formResponse";
+      const form = this;
+      const formData = new FormData(form);
+      const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdm7Yab1LKQO7hO5jjZpGL3qbDHN-WKUDuxtWAE2L4Xfitzug/formResponse";
 
-        fetch(googleFormUrl, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors' // Crucial to bypass cross-origin browser security blocks
-        })
-        .then(() => {
-            showDialogMessage('Gracias por tu respuesta!');
-            form.reset();
-        })
-        .catch(error => {
-            showDialogMessage('Ocurrió un error. Por favor intentá de nuevo.');
-            console.error('Error:', error);
-        });
+      fetch(googleFormUrl, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors' // Crucial to bypass cross-origin browser security blocks
+      })
+      .then(() => {
+          showDialogMessage('Gracias por tu respuesta!');
+          form.reset();
+      })
+      .catch(error => {
+          showDialogMessage('Ocurrió un error. Por favor intentá de nuevo.');
+          console.error('Error:', error);
+      });
+    });
+
+    myForm?.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+      }
     });
   </script>
 
